@@ -1,7 +1,7 @@
 from pynput.keyboard import Key, Controller
 import keyboard as key
 import time
-a = 0
+a = 0 # I think "a" is never used, but iam to lazy to test it
 keyboard = Controller()
 list=[0,1,2,3,4,5,6,7,8,9]
 time.sleep(5)
@@ -28,6 +28,11 @@ while not key.is_pressed('ß'):
 					time.sleep(0.5)
 					time.sleep(0.000001)
 
+#Die Bildschirmkoordinaten der Tastenfelder
+#(Weicht bei anderen Geräten vieleicht ab)
+
+#The screen coordinates of the keypads 
+#(may vary on other devices)					
 
 # 0 = (892, 728)
 # 1 = (891, 524)
