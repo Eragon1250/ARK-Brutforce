@@ -8,6 +8,8 @@ time.sleep(5)
 while not key.is_pressed('ß'):
 
 	print("Die ß Taste wird gerade nicht gedrückt")
+	print("The ß key is not currently being pressed")
+
 
 	for i in list:
 		for j in list:
