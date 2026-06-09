@@ -7,7 +7,7 @@ needs Python to work and Three Python libraries:
 2. keyboard
 3. time
 
-i used Visual Studiyo code to run this, but maybe it also works with other Programms.
+i used Visual Studio code to run this, but maybe it also works with other Programms.
 
 After starting the Programm you have 10 Sekunds to switch back to your window with ARK then it starts working,
 while its working you can Stop it by pressing "ß",
