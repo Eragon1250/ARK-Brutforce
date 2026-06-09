@@ -1,34 +1,61 @@
 from pynput.keyboard import Key, Controller
 import keyboard as key
 import time
-a = 0 # I think "a" is never used, but iam to lazy to test it
+import sys
+import os
+
+script_ordner = os.path.dirname(os.path.abspath(__file__))
+speicherdatei = os.path.join(script_ordner, "letzte_zahl.txt")
+#speicherdatei = "c:\Visual Studio Code\ARK\letzte_zahl.txt"
 keyboard = Controller()
-list=[0,1,2,3,4,5,6,7,8,9]
-time.sleep(5)
-while not key.is_pressed('ß'):
+list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-	print("Die ß Taste wird gerade nicht gedrückt")
-	print("The ß key is not currently being pressed")
+if key.is_pressed('*'):
+	os.remove("c:\Visual Studio Code\ARK\letzte_zahl.txt")
 
+def speichere_letzte_zahl(zahl):
+    with open(speicherdatei, "w") as file:
+        file.write(str(zahl))
 
-	for i in list:
-		for j in list:
-			for k in list:
-				for l in list:
-					keyboard.press(str(i))
-					keyboard.release(str(i))
-					keyboard.press(str(j))
-					keyboard.release(str(j))
-					keyboard.press(str(k))
-					keyboard.release(str(k))
-					keyboard.press(str(l))
-					keyboard.release(str(l))
-					time.sleep(0.7)
-					keyboard.press('e')
-					time.sleep(0.2)
-					keyboard.release('e')
-					time.sleep(0.5)
-					time.sleep(0.000001)
+def lade_letzte_zahl():
+    if not os.path.exists(speicherdatei):
+        speichere_letzte_zahl(0)
+        return 0
+    with open(speicherdatei, "r") as file:
+        return int(file.read().strip())
+
+bisherigezahl = lade_letzte_zahl()
+
+time.sleep(10)
+
+for i in list:
+    for j in list:
+        for k in list:
+            for l in list:
+                zahl = int(f"{i}{j}{k}{l}")
+                if zahl > bisherigezahl:
+                    keyboard.press(str(i))
+                    keyboard.release(str(i))
+                    keyboard.press(str(j))
+                    keyboard.release(str(j))
+                    keyboard.press(str(k))
+                    keyboard.release(str(k))
+                    keyboard.press(str(l))
+                    keyboard.release(str(l))
+                    print(i, j, k, l)
+                    speichere_letzte_zahl(zahl)
+                    if key.is_pressed('*'):
+                        print("Programm geschlossen")
+                        sys.exit()
+                    time.sleep(0.6)
+                    keyboard.press('e')
+                    time.sleep(0.2)
+                    keyboard.release('e')
+                    time.sleep(2)
+                    time.sleep(0.000001)
+                    
+print("Programm zuende!")
+
 
 #Die Bildschirmkoordinaten der Tastenfelder
 #(Weicht bei anderen Geräten vieleicht ab)
